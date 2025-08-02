@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusCare Analytics</title>
+    <link rel="stylesheet" href="analytics.css">
+</head>
+<body>
+    <div class="analytics-container">
+        <header class="analytics-header">
+            <h1>📊 Your Focus Journey</h1>
+            <p>See how you're doing with your digital wellness goals</p>
+        </header>
+
+        <!-- Summary Cards -->
+        <section class="summary-cards">
+            <div class="stat-card">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-info">
+                    <h3 id="total-sessions">0</h3>
+                    <p>Focus Sessions</p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">⏱️</div>
+                <div class="stat-info">
+                    <h3 id="total-time">0h</h3>
+                    <p>Focus Time</p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">🚫</div>
+                <div class="stat-info">
+                    <h3 id="blocked-sites">0</h3>
+                    <p>Sites Blocked</p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">😊</div>
+                <div class="stat-info">
+                    <h3 id="avg-mood">😐</h3>
+                    <p>Average Mood</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Activity -->
+        <section class="recent-activity">
+            <h2>📈 Last 7 Days</h2>
+            <div class="activity-chart">
+                <div class="days-container" id="days-chart">
+                    <!-- Days will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Mood Trends -->
+        <section class="mood-trends">
+            <h2>💙 Mood Overview</h2>
+            <div class="mood-grid" id="mood-grid">
+                <!-- Mood data will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="quick-actions">
+            <button id="clear-data" class="action-btn danger">🗑️ Clear All Data</button>
+            <button id="back-to-focus" class="action-btn primary">🧠 Back to Focus</button>
+        </section>
+    </div>
+    <script src="analytics.js"></script>
+</body>
+</html>

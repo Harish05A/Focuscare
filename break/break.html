@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusCare Break Time</title>
+    <link rel="stylesheet" href="break.css">
+</head>
+<body>
+    <div class="break-container">
+        <header class="break-header">
+            <h1>🧘 Break Time</h1>
+            <p>Take a moment to recharge and refresh your mind</p>
+        </header>
+
+        <!-- Break Timer -->
+        <section class="break-timer">
+            <div class="timer-circle">
+                <div class="timer-display">
+                    <span id="break-minutes">05</span>:
+                    <span id="break-seconds">00</span>
+                </div>
+            </div>
+            <div class="timer-controls">
+                <button id="start-break" class="btn-primary">Start 5-Min Break</button>
+                <button id="skip-break" class="btn-secondary">Skip Break</button>
+            </div>
+        </section>
+
+        <!-- Break Activities -->
+        <section class="break-activities">
+            <h2>Choose Your Break Activity</h2>
+            <div class="activity-grid">
+                <button class="activity-card" data-activity="breathing">
+                    <div class="activity-icon">🫁</div>
+                    <h3>Deep Breathing</h3>
+                    <p>Calm your mind with guided breathing</p>
+                </button>
+                
+                <button class="activity-card" data-activity="stretch">
+                    <div class="activity-icon">🤸</div>
+                    <h3>Quick Stretch</h3>
+                    <p>Relieve tension with simple stretches</p>
+                </button>
+                
+                <button class="activity-card" data-activity="eyes">
+                    <div class="activity-icon">👀</div>
+                    <h3>Eye Rest</h3>
+                    <p>Rest your eyes with the 20-20-20 rule</p>
+                </button>
+                
+                <button class="activity-card" data-activity="hydrate">
+                    <div class="activity-icon">💧</div>
+                    <h3>Stay Hydrated</h3>
+                    <p>Grab a glass of water</p>
+                </button>
+            </div>
+        </section>
+
+        <!-- Break Tips -->
+        <section class="break-tips">
+            <h3>💡 Break Tips</h3>
+            <div class="tips-container" id="break-tips">
+                <!-- Tips will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Quick Return -->
+        <section class="quick-return">
+            <button id="return-to-work" class="return-btn">🎯 Ready to Focus Again</button>
+        </section>
+    </div>
+
+    <!-- Activity Modals -->
+    <div id="activity-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body">
+                <!-- Activity content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="break.js"></script>
+</body>
+</html>

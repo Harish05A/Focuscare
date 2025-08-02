@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusCare Settings</title>
+    <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+    <div class="settings-container">
+        <header class="settings-header">
+            <h1>⚙️ FocusCare Settings</h1>
+            <p>Customize your digital wellness experience</p>
+        </header>
+
+        <nav class="settings-nav">
+            <button class="nav-btn active" data-section="timer">🎯 Timer</button>
+            <button class="nav-btn" data-section="blocking">🚫 Site Blocking</button>
+            <button class="nav-btn" data-section="reminders">⏰ Reminders</button>
+            <button class="nav-btn" data-section="data">📊 Data</button>
+        </nav>
+
+        <!-- Timer Settings -->
+        <section id="timer-settings" class="settings-section active">
+            <h2>🎯 Focus Timer Settings</h2>
+            
+            <div class="setting-group">
+                <h3>Session Duration</h3>
+                <div class="setting-item">
+                    <label for="focus-duration">Focus Session (minutes)</label>
+                    <input type="range" id="focus-duration" min="5" max="120" value="25" step="5">
+                    <span class="range-value" id="focus-value">25</span>
+                </div>
+                
+                <div class="setting-item">
+                    <label for="short-break">Short Break (minutes)</label>
+                    <input type="range" id="short-break" min="1" max="15" value="5" step="1">
+                    <span class="range-value" id="short-break-value">5</span>
+                </div>
+                
+                <div class="setting-item">
+                    <label for="long-break">Long Break (minutes)</label>
+                    <input type="range" id="long-break" min="10" max="30" value="15" step="5">
+                    <span class="range-value" id="long-break-value">15</span>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <h3>Timer Behavior</h3>
+                <div class="setting-item">
+                    <label class="checkbox-container">
+                        Auto-start breaks after focus sessions
+                        <input type="checkbox" id="auto-start-breaks">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <label class="checkbox-container">
+                        Play sound when session completes
+                        <input type="checkbox" id="completion-sound" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <label class="checkbox-container">
+                        Auto-enable site blocking during focus
+                        <input type="checkbox" id="auto-block" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Site Blocking Settings -->
+        <section id="blocking-settings" class="settings-section">
+            <h2>🚫 Site Blocking Settings</h2>
+            
+            <div class="setting-group">
+                <h3>Default Blocked Sites</h3>
+                <div class="blocked-sites-list" id="default-sites">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <h3>Custom Blocked Sites</h3>
+                <div class="setting-item">
+                    <label for="custom-sites">Add custom sites to block (one per line)</label>
+                    <textarea id="custom-sites" placeholder="facebook.com&#10;twitter.com&#10;youtube.com" rows="4"></textarea>
+                </div>
+                
+                <div class="setting-item">
+                    <button id="add-current-site" class="btn-secondary">+ Add Current Tab</button>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <h3>Blocking Options</h3>
+                <div class="setting-item">
+                    <label class="checkbox-container">
+                        Strict mode (harder to disable blocking)
+                        <input type="checkbox" id="strict-mode">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <label class="checkbox-container">
+                        Show motivational message when sites are blocked
+                        <input type="checkbox" id="show-messages" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reminder Settings -->
+        <section id="reminders-settings" class="settings-section">
+            <h2>⏰ Reminder Settings</h2>
+            
+            <div class="setting-group">
+                <h3>Break Reminders</h3>
+                <div class="setting-item">
+                    <label for="reminder-interval">Reminder interval (minutes)</label>
+                    <select id="reminder-interval">
+                        <option value="15">Every 15 minutes</option>
+                        <option value="30" selected>Every 30 minutes</option>
+                        <option value="45">Every 45 minutes</option>
+                        <option value="60">Every hour</option>
+                    </select>
+                </div>
+                
+                <div class="setting-item">
+                    <label class="checkbox-container">
+                        Enable break reminders
+                        <input type="checkbox" id="break-reminders" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <label class="checkbox-container">
+                        Daily mood check-in reminders
+                        <input type="checkbox" id="mood-reminders" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <h3>Notification Style</h3>
+                <div class="setting-item">
+                    <label class="checkbox-container">
+                        Persistent notifications (stay until dismissed)
+                        <input type="checkbox" id="persistent-notifications">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <label for="notification-sound">Notification sound</label>
+                    <select id="notification-sound">
+                        <option value="gentle">Gentle chime</option>
+                        <option value="none" selected>No sound</option>
+                        <option value="bell">Bell</option>
+                        <option value="nature">Nature sound</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Settings -->
+        <section id="data-settings" class="settings-section">
+            <h2>📊 Data & Privacy Settings</h2>
+            
+            <div class="setting-group">
+                <h3>Data Management</h3>
+                <div class="data-stats" id="data-stats">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+                
+                <div class="setting-actions">
+                    <button id="export-data" class="btn-primary">📥 Export Data</button>
+                    <button id="import-data" class="btn-secondary">📤 Import Data</button>
+                    <button id="reset-data" class="btn-danger">🗑️ Reset All Data</button>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <h3>Privacy Options</h3>
+                <div class="setting-item">
+                    <label class="checkbox-container">
+                        Anonymous usage analytics (helps improve FocusCare)
+                        <input type="checkbox" id="anonymous-analytics">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <label class="checkbox-container">
+                        Automatically backup data locally
+                        <input type="checkbox" id="auto-backup" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <h3>Reset Options</h3>
+                <div class="reset-options">
+                    <button id="reset-settings" class="btn-warning">Reset Settings Only</button>
+                    <button id="reset-analytics" class="btn-warning">Reset Analytics Only</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Save/Cancel Actions -->
+        <footer class="settings-footer">
+            <button id="save-settings" class="btn-primary">💾 Save All Settings</button>
+            <button id="cancel-settings" class="btn-secondary">❌ Cancel Changes</button>
+            <button id="restore-defaults" class="btn-warning">🔄 Restore Defaults</button>
+        </footer>
+
+        <!-- Hidden file input for import -->
+        <input type="file" id="import-file" accept=".json" style="display: none;">
+    </div>
+
+    <script src="settings.js"></script>
+</body>
+</html>
