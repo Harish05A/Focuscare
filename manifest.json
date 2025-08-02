@@ -1,50 +1,38 @@
 {
   "manifest_version": 3,
-  "name": "FocusCare",
-  "version": "1.0.0",
-  "description": "A Chrome extension to combat digital burnout and improve focus",
+  "name": "FocusCare 2.0 - Revolutionary Digital Wellness",
+  "version": "2.0.0",
+  "description": "World's first AI-powered biometric digital wellness extension with 3D environments",
   
   "permissions": [
     "storage",
-    "alarms",
+    "alarms", 
     "notifications",
     "activeTab",
-    "tabs"
+    "tabs",
+    "webNavigation",
+    "idle"
   ],
   
   "background": {
-    "service_worker": "background/background.js"
+    "service_worker": "core/background/background.js"
   },
   
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content/content.js"]
-    }
-  ],
-  
   "action": {
-    "default_popup": "popup/popup.html",
-    "default_title": "FocusCare",
+    "default_popup": "core/popup/popup.html",
+    "default_title": "FocusCare 2.0 - Revolutionary Focus",
     "default_icon": {
       "16": "assets/icons/icon16.png",
-      "32": "assets/icons/icon32.png",
+      "32": "assets/icons/icon32.png", 
       "48": "assets/icons/icon48.png",
       "128": "assets/icons/icon128.png"
     }
   },
   
-  "web_accessible_resources": [
-    {
-      "resources": ["analytics/analytics.html", "break/break.html", "settings/settings.html"],
-      "matches": ["<all_urls>"]
-    }
-  ],
-  
   "icons": {
     "16": "assets/icons/icon16.png",
     "32": "assets/icons/icon32.png",
-    "48": "assets/icons/icon48.png",
+    "48": "assets/icons/icon48.png", 
     "128": "assets/icons/icon128.png"
   }
 }
