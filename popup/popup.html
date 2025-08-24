@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusCare 2.0</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body class="dark-theme">
+    <div class="popup-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <span class="logo-icon">🎯</span>
+                <span class="logo-text">FocusCare 2.0</span>
+            </div>
+            <div class="status-indicator" id="status-dot"></div>
+        </div>
+
+        <!-- Focus Status Card -->
+        <div class="focus-card">
+            <div class="focus-status">
+                <div class="status-icon" id="focus-icon">⚡</div>
+                <div class="status-info">
+                    <div class="status-title" id="status-title">Ready to Focus</div>
+                    <div class="status-subtitle" id="status-subtitle">Start your productive session</div>
+                </div>
+            </div>
+            
+            <div class="productivity-score">
+                <div class="score-circle">
+                    <div class="score-number" id="productivity-score">85</div>
+                    <div class="score-label">%</div>
+                </div>
+                <div class="score-text">Productivity Score</div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <button class="action-btn primary" id="start-focus-btn">
+                <span class="btn-icon">🚀</span>
+                <span class="btn-text">Start Focus Session</span>
+            </button>
+            
+            <div class="action-row">
+                <button class="action-btn secondary" id="quick-break-btn">
+                    <span class="btn-icon">☕</span>
+                    <span class="btn-text">Quick Break</span>
+                </button>
+                
+                <button class="action-btn secondary" id="toggle-blocking-btn">
+                    <span class="btn-icon">🛡️</span>
+                    <span class="btn-text">Toggle Blocking</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Today's Stats -->
+        <div class="stats-section">
+            <h3 class="section-title">Today's Progress</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="focus-time">0m</div>
+                        <div class="stat-label">Focus Time</div>
+                    </div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-icon">🚫</div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="blocked-count">0</div>
+                        <div class="stat-label">Sites Blocked</div>
+                    </div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="sessions-completed">0</div>
+                        <div class="stat-label">Sessions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Focus Session Timer (Hidden by default) -->
+        <div class="timer-section hidden" id="timer-section">
+            <div class="timer-display">
+                <div class="timer-circle">
+                    <div class="timer-time" id="timer-time">25:00</div>
+                </div>
+                <div class="timer-controls">
+                    <button class="timer-btn" id="pause-btn">⏸️</button>
+                    <button class="timer-btn danger" id="stop-btn">⏹️</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <button class="footer-btn" id="settings-btn">⚙️ Settings</button>
+            <button class="footer-btn" id="analytics-btn">📊 Analytics</button>
+        </div>
+    </div>
+
+    <!-- Focus Session Modal -->
+    <div class="modal hidden" id="focus-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Start Focus Session</h3>
+                <button class="close-btn" id="close-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="duration-selector">
+                    <label>Session Duration:</label>
+                    <div class="duration-options">
+                        <button class="duration-btn" data-duration="15">15min</button>
+                        <button class="duration-btn active" data-duration="25">25min</button>
+                        <button class="duration-btn" data-duration="45">45min</button>
+                        <button class="duration-btn" data-duration="60">60min</button>
+                    </div>
+                </div>
+                
+                <div class="session-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="strict-mode">
+                        <span class="checkmark"></span>
+                        Strict Mode (No breaks allowed)
+                    </label>
+                    
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="notifications">
+                        <span class="checkmark"></span>
+                        Enable notifications
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" id="cancel-session">Cancel</button>
+                <button class="btn-start" id="confirm-start">Start Session</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

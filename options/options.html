@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusCare 2.0 - Settings</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body class="dark-theme">
+    <div class="options-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🎯</span>
+                    <div class="logo-text">
+                        <h1>FocusCare 2.0</h1>
+                        <p>Advanced Productivity Settings</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-secondary" id="export-data">📊 Export Data</button>
+                    <button class="btn-primary" id="save-settings">💾 Save Settings</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Navigation Tabs -->
+            <nav class="tab-navigation">
+                <button class="tab-btn active" data-tab="general">⚙️ General</button>
+                <button class="tab-btn" data-tab="blocking">🛡️ Website Blocking</button>
+                <button class="tab-btn" data-tab="focus">🎯 Focus Sessions</button>
+                <button class="tab-btn" data-tab="analytics">📊 Analytics</button>
+                <button class="tab-btn" data-tab="advanced">🔧 Advanced</button>
+            </nav>
+
+            <!-- Tab Contents -->
+            <div class="tab-content">
+                <!-- General Settings Tab -->
+                <div class="tab-panel active" id="general-panel">
+                    <div class="panel-header">
+                        <h2>General Settings</h2>
+                        <p>Configure basic FocusCare 2.0 behavior and preferences</p>
+                    </div>
+
+                    <div class="settings-grid">
+                        <div class="setting-group">
+                            <h3>🌙 Theme & Appearance</h3>
+                            <div class="setting-item">
+                                <label class="setting-label">
+                                    <span>Theme</span>
+                                    <select id="theme-select" class="select-input">
+                                        <option value="dark">Dark Theme</option>
+                                        <option value="light">Light Theme</option>
+                                        <option value="auto">Auto (System)</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-group">
+                            <h3>🔔 Notifications</h3>
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <span>Enable notifications</span>
+                                    <input type="checkbox" id="notifications-enabled" class="toggle-input">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <span>Focus session reminders</span>
+                                    <input type="checkbox" id="session-reminders" class="toggle-input">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <span>Daily progress summary</span>
+                                    <input type="checkbox" id="daily-summary" class="toggle-input">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-group">
+                            <h3>⏰ Working Hours</h3>
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <span>Enable working hours</span>
+                                    <input type="checkbox" id="working-hours-enabled" class="toggle-input">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item time-range">
+                                <label class="setting-label">
+                                    <span>Start time</span>
+                                    <input type="time" id="work-start-time" class="time-input" value="09:00">
+                                </label>
+                                <label class="setting-label">
+                                    <span>End time</span>
+                                    <input type="time" id="work-end-time" class="time-input" value="17:00">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Website Blocking Tab -->
+                <div class="tab-panel" id="blocking-panel">
+                    <div class="panel-header">
+                        <h2>Website Blocking</h2>
+                        <p>Manage which websites to block during focus sessions</p>
+                    </div>
+
+                    <div class="blocking-content">
+                        <div class="blocking-controls">
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <span>Enable website blocking</span>
+                                    <input type="checkbox" id="blocking-enabled" class="toggle-input">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <span>Strict mode (no override)</span>
+                                    <input type="checkbox" id="strict-mode-global" class="toggle-input">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="category-tabs">
+                            <button class="category-btn active" data-category="social">📱 Social Media</button>
+                            <button class="category-btn" data-category="entertainment">🎬 Entertainment</button>
+                            <button class="category-btn" data-category="shopping">🛒 Shopping</button>
+                            <button class="category-btn" data-category="news">📰 News</button>
+                            <button class="category-btn" data-category="custom">➕ Custom</button>
+                        </div>
+
+                        <div class="sites-container">
+                            <div class="sites-list" id="sites-list">
+                                <!-- Sites will be populated by JavaScript -->
+                            </div>
+                            
+                            <div class="add-site-form" id="add-site-form">
+                                <input type="text" id="new-site-input" placeholder="Enter website URL (e.g., example.com)" class="text-input">
+                                <button class="btn-primary" id="add-site-btn">Add Site</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Focus Sessions Tab -->
+                <div class="tab-panel" id="focus-panel">
+                    <div class="panel-header">
+                        <h2>Focus Sessions</h2>
+                        <p>Customize focus session behavior and default settings</p>
+                    </div>
+
+                    <div class="settings-grid">
+                        <div class="setting-group">
+                            <h3>⏱️ Default Session Settings</h3>
+                            <div class="setting-item">
+                                <label class="setting-label">
+                                    <span>Default session duration</span>
+                                    <select id="default-duration" class="select-input">
+                                        <option value="15">15 minutes</option>
+                                        <option value="25" selected>25 minutes</option>
+                                        <option value="45">45 minutes</option>
+                                        <option value="60">60 minutes</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label class="setting-label">
+                                    <span>Break interval</span>
+                                    <select id="break-interval" class="select-input">
+                                        <option value="5">5 minutes</option>
+                                        <option value="10">10 minutes</option>
+                                        <option value="15" selected>15 minutes</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-group">
+                            <h3>🔄 Auto-Start Features</h3>
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <span>Auto-start focus sessions at work hours</span>
+                                    <input type="checkbox" id="auto-start-work" class="toggle-input">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <span>Continue sessions after breaks</span>
+                                    <input type="checkbox" id="continue-sessions" class="toggle-input">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-group">
+                            <h3>🎵 Focus Sounds</h3>
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <span>Enable focus sounds</span>
+                                    <input type="checkbox" id="focus-sounds" class="toggle-input">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label class="setting-label">
+                                    <span>Sound type</span>
+                                    <select id="sound-type" class="select-input">
+                                        <option value="none">None</option>
+                                        <option value="rain">Rain</option>
+                                        <option value="forest">Forest</option>
+                                        <option value="cafe">Cafe</option>
+                                        <option value="white-noise">White Noise</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics Tab -->
+                <div class="tab-panel" id="analytics-panel">
+                    <div class="panel-header">
+                        <h2>Analytics Dashboard</h2>
+                        <p>Track your productivity and focus patterns</p>
+                    </div>
+
+                    <div class="analytics-content">
+                        <!-- Summary Cards -->
+                        <div class="analytics-summary">
+                            <div class="analytics-card">
+                                <div class="card-icon">⏱️</div>
+                                <div class="card-content">
+                                    <div class="card-value" id="total-focus-time">0h 0m</div>
+                                    <div class="card-label">Total Focus Time</div>
+                                </div>
+                            </div>
+                            <div class="analytics-card">
+                                <div class="card-icon">🎯</div>
+                                <div class="card-content">
+                                    <div class="card-value" id="total-sessions">0</div>
+                                    <div class="card-label">Sessions Completed</div>
+                                </div>
+                            </div>
+                            <div class="analytics-card">
+                                <div class="card-icon">🚫</div>
+                                <div class="card-content">
+                                    <div class="card-value" id="total-blocked">0</div>
+                                    <div class="card-label">Sites Blocked</div>
+                                </div>
+                            </div>
+                            <div class="analytics-card">
+                                <div class="card-icon">📈</div>
+                                <div class="card-content">
+                                    <div class="card-value" id="productivity-streak">0</div>
+                                    <div class="card-label">Day Streak</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Charts Container -->
+                        <div class="charts-container">
+                            <div class="chart-card">
+                                <h3>Weekly Focus Time</h3>
+                                <div class="chart-placeholder" id="weekly-chart">
+                                    <div class="chart-bars" id="weekly-bars"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="chart-card">
+                                <h3>Most Blocked Sites</h3>
+                                <div class="blocked-sites-list" id="blocked-sites-list">
+                                    <!-- Will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Productivity Insights -->
+                        <div class="insights-section">
+                            <h3>🧠 Productivity Insights</h3>
+                            <div class="insights-list" id="insights-list">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advanced Tab -->
+                <div class="tab-panel" id="advanced-panel">
+                    <div class="panel-header">
+                        <h2>Advanced Settings</h2>
+                        <p>Fine-tune FocusCare 2.0 performance and behavior</p>
+                    </div>
+
+                    <div class="settings-grid">
+                        <div class="setting-group">
+                            <h3>🔧 Performance</h3>
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <span>Low memory mode</span>
+                                    <input type="checkbox" id="low-memory-mode" class="toggle-input">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label class="setting-label">
+                                    <span>Data retention period</span>
+                                    <select id="data-retention" class="select-input">
+                                        <option value="30">30 days</option>
+                                        <option value="90" selected>90 days</option>
+                                        <option value="365">1 year</option>
+                                        <option value="0">Keep forever</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-group">
+                            <h3>🔒 Privacy</h3>
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <span>Anonymous analytics</span>
+                                    <input type="checkbox" id="anonymous-analytics" class="toggle-input">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <span>Local data only</span>
+                                    <input type="checkbox" id="local-only" class="toggle-input" checked disabled>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-group">
+                            <h3>🔄 Data Management</h3>
+                            <div class="data-management">
+                                <button class="btn-secondary" id="backup-data">📦 Backup Data</button>
+                                <button class="btn-secondary" id="restore-data">📥 Restore Data</button>
+                                <button class="btn-danger" id="reset-data">🗑️ Reset All Data</button>
+                            </div>
+                            <div class="data-info">
+                                <p>Current data size: <span id="data-size">Calculating...</span></p>
+                                <p>Last backup: <span id="last-backup">Never</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Save Confirmation Toast -->
+        <div class="toast hidden" id="save-toast">
+            <div class="toast-content">
+                <span class="toast-icon">✅</span>
+                <span class="toast-message">Settings saved successfully!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- File input for data restore -->
+    <input type="file" id="restore-file-input" accept=".json" style="display: none;">
+
+    <script src="options.js"></script>
+</body>
+</html>

@@ -1,38 +1,42 @@
 {
   "manifest_version": 3,
-  "name": "FocusCare 2.0 - Revolutionary Digital Wellness",
+  "name": "FocusCare 2.0",
   "version": "2.0.0",
-  "description": "World's first AI-powered biometric digital wellness extension with 3D environments",
+  "description": "AI-powered productivity booster with 99% efficiency - completely free",
   
   "permissions": [
     "storage",
-    "alarms", 
-    "notifications",
-    "activeTab",
     "tabs",
-    "webNavigation",
-    "idle"
+    "activeTab",
+    "alarms",
+    "notifications",
+    "scripting"
+  ],
+  
+  "host_permissions": [
+    "<all_urls>"
   ],
   
   "background": {
-    "service_worker": "core/background/background.js"
+    "service_worker": "background.js"
   },
+  
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content.js"],
+    "run_at": "document_start"
+  }],
   
   "action": {
-    "default_popup": "core/popup/popup.html",
-    "default_title": "FocusCare 2.0 - Revolutionary Focus",
-    "default_icon": {
-      "16": "assets/icons/icon16.png",
-      "32": "assets/icons/icon32.png", 
-      "48": "assets/icons/icon48.png",
-      "128": "assets/icons/icon128.png"
-    }
+    "default_popup": "popup/popup.html",
+    "default_title": "FocusCare 2.0 - Focus Dashboard"
   },
   
+  "options_page": "options/options.html",
+  
   "icons": {
-    "16": "assets/icons/icon16.png",
-    "32": "assets/icons/icon32.png",
-    "48": "assets/icons/icon48.png", 
-    "128": "assets/icons/icon128.png"
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   }
 }

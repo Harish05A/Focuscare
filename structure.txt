@@ -1,0 +1,20 @@
+focuscare-2.0/
+├── manifest.json
+├── background.js
+├── content.js
+├── popup/
+│   ├── popup.html
+│   ├── popup.js
+│   └── popup.css
+├── options/
+│   ├── options.html
+│   ├── options.js
+│   └── options.css
+├── utils/
+│   ├── storage.js
+│   ├── analytics.js
+│   └── blocker.js
+└── icons/
+    ├── icon16.png
+    ├── icon48.png
+    └── icon128.png
